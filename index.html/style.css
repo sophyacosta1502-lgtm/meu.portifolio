@@ -1,0 +1,288 @@
+
+:root {
+    --rosa-blush: #F4C6D4;
+    --azul-suave: #D8E8F5;
+    --vinho: #A64D68;
+    --vinho-escuro: #573746;
+    --branco-rosado: #FFF7F8;
+    --texto: #624C58;
+    --borda: #E7B6C6;
+}
+
+/* CONFIGURAÇÕES GERAIS */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Poppins", sans-serif;
+    color: var(--texto);
+
+    /* DEGRADÊ VINHO E ROSA */
+    background: linear-gradient(
+        135deg,
+        #573746 0%,
+        #A64D68 35%,
+        #F4C6D4 70%,
+        #FFF7F8 100%
+    );
+}
+
+/* FLORES DECORATIVAS NAS LATERAIS */
+body::before,
+body::after {
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    width: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: pre-wrap;
+    text-align: center;
+    line-height: 2.2;
+    font-size: 38px;
+    color: var(--branco-rosado);
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 0;
+}
+
+body::before {
+    content: "❀\A ✿\A ❁\A ✿";
+    left: 8px;
+}
+
+body::after {
+    content: "✿\A ❁\A ✿\A ❀";
+    right: 8px;
+}
+
+/* CONTEÚDO PRINCIPAL */
+main {
+    position: relative;
+    z-index: 1;
+    width: min(900px, 92%);
+    margin: 0 auto;
+}
+
+/* APRESENTAÇÃO */
+.inicio {
+    text-align: center;
+    padding: 45px 20px 32px;
+}
+
+.inicio img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    border: 4px solid var(--branco-rosado);
+    outline: 2px solid var(--vinho);
+    box-shadow: 0 8px 24px #57374625;
+}
+
+.inicio h1 {
+    color: var(--branco-rosado);
+    font-family: "Lora", Georgia, serif;
+    font-size: 34px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    margin: 18px 0 8px;
+}
+
+.subtitulo {
+    color: var(--branco-rosado);
+    font-size: 14px;
+    margin: 0;
+    line-height: 1.8;
+}
+
+/* BOTÕES DE NAVEGAÇÃO */
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 26px;
+}
+
+nav button {
+    background: var(--branco-rosado);
+    color: var(--vinho-escuro);
+    font-family: "Poppins", sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 11px 18px;
+    border: 1px solid var(--borda);
+    border-radius: 25px;
+    cursor: pointer;
+
+    box-shadow: 0 3px 10px #5737460A;
+
+    transition:
+        background-color 0.25s,
+        color 0.25s,
+        transform 0.25s,
+        box-shadow 0.25s;
+}
+
+/* EFEITO AO PASSAR O MOUSE */
+nav button:hover,
+nav button.ativo {
+    background: var(--vinho);
+    color: white;
+    border-color: var(--vinho);
+    box-shadow: 0 5px 14px #A64D6830;
+    transform: translateY(-2px);
+}
+
+/* ACESSIBILIDADE DOS BOTÕES */
+nav button:focus-visible {
+    outline: 3px solid var(--azul-suave);
+    outline-offset: 3px;
+}
+
+/* CARTÕES DAS SEÇÕES */
+section {
+    max-width: 650px;
+    margin: 20px auto;
+    padding: 26px;
+
+    background: var(--branco-rosado);
+    border: 1px solid var(--borda);
+    border-left: 5px solid var(--vinho);
+    border-radius: 18px;
+
+    box-shadow: 0 8px 24px #57374612;
+
+    scroll-margin-top: 20px;
+    animation: aparecer 0.3s ease;
+}
+
+/* ESCONDE AS SEÇÕES FECHADAS */
+section[hidden] {
+    display: none;
+}
+
+section h2 {
+    color: var(--vinho-escuro);
+    font-family: "Lora", Georgia, serif;
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0 0 14px;
+}
+
+section p {
+    color: var(--texto);
+    font-size: 14px;
+    line-height: 1.9;
+    margin: 0;
+}
+
+/* RODAPÉ CENTRALIZADO */
+footer {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: 30px auto 0;
+    padding: 20px 10px;
+
+    color: var(--branco-rosado);
+    font-family: "Poppins", sans-serif;
+    font-size: 13px;
+}
+
+/* ANIMAÇÃO DAS SEÇÕES */
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* AJUSTES PARA CELULAR */
+@media (max-width: 600px) {
+    main {
+        width: 94%;
+    }
+
+    .inicio {
+        padding: 32px 10px 24px;
+    }
+
+    .inicio img {
+        width: 130px;
+        height: 130px;
+    }
+
+    .inicio h1 {
+        font-size: 28px;
+    }
+
+    nav {
+        gap: 9px;
+    }
+
+    nav button {
+        padding: 10px 13px;
+        font-size: 12px;
+    }
+
+    section {
+        padding: 20px;
+        margin: 15px auto;
+    }
+
+    section h2 {
+        font-size: 20px;
+    }
+
+    footer {
+        padding: 18px 10px;
+        font-size: 12px;
+    }
+
+    /* FLORES MENORES NO CELULAR */
+    body::before,
+    body::after {
+        width: 25px;
+        font-size: 20px;
+        opacity: 0.25;
+    }
+
+    body::before {
+        left: 0;
+    }
+
+    body::after {
+        right: 0;
+    }
+}
+
+/* RESPEITA QUEM PREFERE MENOS ANIMAÇÕES */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
